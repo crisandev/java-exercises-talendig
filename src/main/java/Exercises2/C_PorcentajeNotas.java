@@ -4,6 +4,8 @@
  */
 package Exercises2;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -36,12 +38,41 @@ import java.util.Scanner;
 public class C_PorcentajeNotas {
 
     public static void main( String[] args ) {
+        NumberFormat percentage = NumberFormat.getPercentInstance(Locale.US);
         Scanner sc = new Scanner(System.in);
 
         System.out.println("|- PORCENTAJE DE NOTAS |");
         System.out.print("|- INTRODUCE EL NÚMERO DE SOBRESALIENTES: ");
-        System.out.print("|- INTRODUCE EL NÚMERO NOTABLES: ");
-        System.out.print("|- INTRODUCE EL NÚMERO APROBADOS: ");
-        System.out.print("|- INTRODUCE EL NÚMERO SUSPENSOS: ");
+        int sobreSalientes = sc.nextInt();
+        System.out.print("|- INTRODUCE EL NÚMERO DE NOTABLES: ");
+        int notables = sc.nextInt();
+        System.out.print("|- INTRODUCE EL NÚMERO DE APROBADOS: ");
+        int aprobados = sc.nextInt();
+        System.out.print("|- INTRODUCE EL NÚMERO DE SUSPENSOS: ");
+        int suspensos = sc.nextInt();
+        System.out.print("|- INTRODUCE EL NÚMERO DE NO PRESENTADOS: ");
+        int noPresentados = sc.nextInt();
+
+        double total = sobreSalientes + notables + aprobados + suspensos + noPresentados;
+
+        System.out.println("| SOBRESALIENTES: " + sobreSalientes + " (" + String.format("%.2f", 100 * sobreSalientes / total) + "%)");
+        System.out.println("| NOTABLES: " + notables + " (" + String.format("%.2f", 100 * notables / total) + "%)");
+        System.out.println("| APROBADOS: " + aprobados + " (" + String.format("%.2f", 100 * aprobados / total) + "%)");
+        System.out.println("| SUSPENSOS: " + suspensos + " (" + String.format("%.2f", 100 * suspensos / total) + "%)");
+        System.out.println("| NO PRESENTADOS: " + noPresentados + " (" + String.format("%.2f", 100 * noPresentados / total) + "%)");
+        System.out.println("| TOTAL: " + ( (int) total ));
+
+        double ttlPresentados = total - noPresentados;
+        double ttlAprobados = ttlPresentados - suspensos;
+        double ttlSuspensos = suspensos;
+        double ttlNoPresentados = noPresentados;
+
+        System.out.println("| TOTAL PRESENTADOS: " + ( (int) ttlPresentados ) + " (" + String.format("%.2f", 100 * ttlPresentados / total)
+                 + ")%");
+        System.out.println("| TOTAL APROBADOS: " + ( (int) ttlAprobados ) + " (" + String.format("%.2f", 100 * ttlAprobados / total) + ")%");
+        System.out.println("| TOTAL SUSPENSOS: " + ( (int) ttlSuspensos ) + " (" + String.format("%.2f", 100 * ttlSuspensos / total) + ")%");
+        System.out.println("| TOTAL NO PRESENTADOS: " + ( (int) ttlNoPresentados ) + " (" + String.format("%.2f", 100 * ttlNoPresentados
+                 / total) + ")%");
+
     }
 }
