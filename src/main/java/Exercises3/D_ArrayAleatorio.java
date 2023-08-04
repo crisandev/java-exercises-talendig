@@ -8,7 +8,7 @@ package Exercises3;
  *
  * @author scris
  */
-public class D_ListaAleatoria {
+public class D_ArrayAleatorio {
 
     public static void main( String[] args ) {
         int[] numerosRandom = new int[10];
